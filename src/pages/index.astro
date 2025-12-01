@@ -20,7 +20,7 @@ import aromas from '../data/aromas.json';
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
         {aromas.map((aroma) => (
           <a
-            href={`${import.meta.env.BASE_URL}train/${aroma.id}`}
+            href={`${import.meta.env.BASE_URL}/train/${aroma.id}`}
             class="group relative overflow-hidden rounded-2xl bg-slate-800 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 aspect-[3/4] md:aspect-square touch-manipulation"
           >
             <!-- Imagen con View Transition -->
