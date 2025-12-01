@@ -5,7 +5,7 @@ const PHASE_DURATIONS = {
   ACTION: 20,      // 20 segundos
 };
 
-const TrainingSession = ({ aroma }) => {
+const TrainingSession = ({ aroma, baseUrl = '/' }) => {
   const [phase, setPhase] = useState('STIMULATION'); // 'STIMULATION' | 'ACTION' | 'COMPLETED'
   const [timeLeft, setTimeLeft] = useState(PHASE_DURATIONS.STIMULATION);
   const [progress, setProgress] = useState(0);
@@ -195,7 +195,7 @@ const TrainingSession = ({ aroma }) => {
               Repetir Sesión
             </button>
             <a
-              href="/"
+              href={baseUrl}
               className="w-full md:w-auto h-12 md:h-auto px-6 md:px-8 py-3 bg-slate-700 hover:bg-slate-600 text-slate-100 rounded-full font-semibold transition-colors flex items-center justify-center touch-manipulation"
             >
               Volver al Menú
