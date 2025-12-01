@@ -1,0 +1,123 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import TrainingSession from '../../components/TrainingSession.jsx';
+import aromas from '../../data/aromas.json';
+
+export function getStaticPaths() {
+  return aromas.map((aroma) => ({
+    params: { id: aroma.id },
+    props: { aroma },
+  }));
+}
+
+const { aroma } = Astro.props;
+---
+
+<Layout title={`Entrenamiento: ${aroma.name}`}>
+  <main class="min-h-svh bg-slate-900 md:h-screen md:overflow-hidden">
+    <!-- Layout Mobile: Vertical (flex-col) -->
+    <!-- Layout Desktop: Pantalla dividida (grid-cols-2) -->
+    <div class="flex flex-col md:grid md:grid-cols-2 md:h-screen">
+
+      <!-- LADO IZQUIERDO: Imagen (Desktop) / Imagen Superior (Mobile) -->
+      <div class="relative w-full aspect-video md:aspect-auto md:h-screen">
+        <!-- Imagen Hero con View Transition -->
+        <img
+          src={aroma.images[0]}
+          alt={aroma.name}
+          class="absolute inset-0 w-full h-full object-cover"
+          transition:name={`aroma-${aroma.id}`}
+        />
+
+        <!-- Overlay oscuro sutil -->
+        <div class="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-slate-900/30 to-slate-900/0" />
+
+        <!-- Botón volver (solo mobile, arriba izquierda) -->
+        <div class="md:hidden absolute top-4 left-4 z-10">
+          <a
+            href="/"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-slate-900/80 backdrop-blur-md text-slate-100 rounded-full font-semibold transition-all shadow-lg touch-manipulation hover:bg-slate-900"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Volver
+          </a>
+        </div>
+
+        <!-- Título superpuesto (solo mobile, abajo) -->
+        <div class="md:hidden absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-slate-900 to-transparent">
+          <h1 class="text-3xl font-bold text-white font-serif drop-shadow-lg">
+            {aroma.name}
+          </h1>
+        </div>
+      </div>
+
+      <!-- LADO DERECHO: Panel de Control (Desktop) / Contenido Scroll (Mobile) -->
+      <div class="flex-1 md:h-screen md:overflow-y-auto bg-slate-900">
+        <!-- Botón volver (solo desktop) -->
+        <div class="hidden md:block p-6">
+          <a
+            href="/"
+            class="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-100 rounded-full font-semibold transition-all shadow-lg"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Volver
+          </a>
+        </div>
+
+        <!-- Título (solo desktop) -->
+        <div class="hidden md:block px-8 lg:px-12 pb-6">
+          <h1 class="text-4xl lg:text-5xl font-bold text-slate-100 font-serif">
+            {aroma.name}
+          </h1>
+        </div>
+
+        <!-- Contenedor de la Sesión -->
+        <div class="px-4 py-6 md:px-8 lg:px-12 md:flex md:flex-col md:justify-center md:min-h-[calc(100vh-200px)]">
+          <TrainingSession client:load aroma={aroma} />
+        </div>
+
+        <!-- Consejos (solo desktop, al final) -->
+        <div class="hidden md:block px-8 lg:px-12 pb-8">
+          <div class="bg-slate-800/50 backdrop-blur-sm rounded-xl p-5 border border-slate-700">
+            <h3 class="text-base font-semibold text-slate-200 mb-3">💡 Consejos</h3>
+            <ul class="space-y-2 text-sm text-slate-400">
+              <li class="flex gap-2">
+                <span class="text-primary-400">•</span>
+                <span>Realiza este ejercicio 2 veces al día durante 3 meses</span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-primary-400">•</span>
+                <span>Concéntrate en los recuerdos y emociones</span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-primary-400">•</span>
+                <span>Inspiraciones cortas y suaves (no profundas)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+</style>

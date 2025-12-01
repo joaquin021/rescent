@@ -1,0 +1,112 @@
+📁 ANOSMIA - Web App de Entrenamiento Olfativo
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+anosmia/
+│
+├── 📄 START_HERE.md              ⭐ EMPIEZA AQUÍ
+├── 📄 GUIA_RAPIDA.md             👉 Cómo personalizar
+├── 📄 TECHNICAL_SUMMARY.md       🔧 Detalles técnicos
+├── 📄 EJEMPLOS_CODIGO.md         💻 Snippets de código
+├── 📄 README.md                  📖 Documentación general
+│
+├── ⚙️  astro.config.mjs          Configuración de Astro
+├── 🎨 tailwind.config.mjs        Configuración de Tailwind
+├── 📦 package.json               Dependencias del proyecto
+├── 🔧 tsconfig.json              Configuración TypeScript
+│
+├── 📁 public/
+│   └── 🖼️  favicon.svg          Icono del sitio
+│
+├── 📁 src/
+│   │
+│   ├── 📁 components/
+│   │   └── ⚛️  TrainingSession.jsx    🔥 Componente React principal
+│   │                                    - State machine (3 fases)
+│   │                                    - Timers automáticos
+│   │                                    - Barra de progreso
+│   │
+│   ├── 📁 data/
+│   │   └── 📊 aromas.json              🎯 BASE DE DATOS DE AROMAS
+│   │                                    - Naranja
+│   │                                    - Eucalipto
+│   │                                    - Geranio
+│   │                                    - Canela
+│   │
+│   ├── 📁 layouts/
+│   │   └── 🏗️  Layout.astro           Layout base con ViewTransitions
+│   │
+│   ├── 📁 pages/
+│   │   ├── 🏠 index.astro              Página principal (Grid de aromas)
+│   │   └── 📁 train/
+│   │       └── 🎓 [id].astro           Página de entrenamiento dinámico
+│   │
+│   └── 📁 styles/
+│       └── 🎨 global.css               Estilos globales Tailwind
+│
+└── 📁 dist/                      (Generado con 'npm run build')
+    └── Archivos estáticos optimizados para producción
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FLUJO DE LA APLICACIÓN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Usuario visita: http://localhost:4321
+   ↓
+2. Ve 4 tarjetas de aromas (index.astro)
+   ↓
+3. Hace clic en un aroma → View Transition suave
+   ↓
+4. Página /train/[id] carga el componente React
+   ↓
+5. FASE 1 - STIMULATION (60s) ⚠️ NO HUELE TODAVÍA
+   - Muestra imágenes, adjetivos, texto, preguntas
+   - Usuario lee y reflexiona ANTES de oler
+   - Barra de progreso naranja
+   ↓
+6. FASE 2 - ACTION (20s) ✅ AHORA SÍ HUELE
+   - "¡Huele Ahora!"
+   - Haz inspiraciones cortas y suaves (no profundas)
+   - Barra de progreso verde
+   ↓
+7. FASE 3 - COMPLETED
+   - Botones: Repetir / Volver al menú
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+COMANDOS PRINCIPALES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 npm run dev        → Servidor de desarrollo (localhost:4321)
+🏗️  npm run build     → Compilar para producción
+👁️  npm run preview   → Vista previa del build
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ARCHIVOS PARA PERSONALIZAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 src/data/aromas.json
+   → Cambia textos, imágenes, preguntas
+
+⚛️  src/components/TrainingSession.jsx (líneas 4-7)
+   → Cambia duración de fases (60s / 20s)
+
+🎨 tailwind.config.mjs (líneas 6-26)
+   → Cambia colores del diseño
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TECNOLOGÍAS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ Astro 4.x           → Framework principal
+⚛️  React 18           → Componente interactivo (isla)
+🎨 Tailwind CSS 3      → Estilos
+🔄 View Transitions    → Animaciones nativas
+📦 TypeScript          → Type safety
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ PROYECTO 100% COMPLETO Y FUNCIONAL

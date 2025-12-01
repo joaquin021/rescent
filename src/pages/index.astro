@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+import aromas from '../data/aromas.json';
+---
+
+<Layout title="Entrenamiento Olfativo">
+  <main class="min-h-screen bg-slate-900">
+    <!-- Header -->
+    <header class="container mx-auto px-4 py-8 md:py-12 text-center">
+      <h1 class="text-4xl md:text-6xl font-bold text-slate-100 mb-3 md:mb-4 font-serif">
+        Entrenamiento Olfativo
+      </h1>
+      <p class="text-base md:text-xl text-slate-400 max-w-2xl mx-auto">
+        Reconecta con tus sentidos a través de una experiencia guiada de aromas
+      </p>
+    </header>
+
+    <!-- Grid de Aromas -->
+    <section class="container mx-auto px-4 pb-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
+        {aromas.map((aroma) => (
+          <a
+            href={`/train/${aroma.id}`}
+            class="group relative overflow-hidden rounded-2xl bg-slate-800 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 aspect-[3/4] md:aspect-square touch-manipulation"
+          >
+            <!-- Imagen con View Transition -->
+            <img
+              src={aroma.images[0]}
+              alt={aroma.name}
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              transition:name={`aroma-${aroma.id}`}
+            />
+
+            <!-- Overlay con gradiente -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+            <!-- Contenido -->
+            <div class="absolute inset-0 flex flex-col justify-end p-5 md:p-6">
+              <h2 class="text-2xl md:text-3xl font-bold text-white mb-1 md:mb-2 font-serif">
+                {aroma.name}
+              </h2>
+              <p class="text-white/80 text-sm md:text-base">
+                80 segundos
+              </p>
+
+              <!-- Indicador de hover/tap -->
+              <div class="mt-3 md:mt-4 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+                <span class="inline-flex items-center text-white text-sm font-medium bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                  Comenzar
+                  <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Instrucciones -->
+    <section class="container mx-auto px-4 pb-16">
+      <div class="max-w-3xl mx-auto bg-slate-800/50 backdrop-blur-sm rounded-2xl shadow-xl p-6 md:p-8 border border-slate-700">
+        <h3 class="text-xl md:text-2xl font-bold text-slate-100 mb-4 md:mb-6 font-serif">
+          Cómo funciona
+        </h3>
+        <ol class="space-y-4 md:space-y-5 text-slate-300">
+          <li class="flex gap-3 md:gap-4">
+            <span class="flex-shrink-0 w-8 h-8 md:w-9 md:h-9 bg-primary-500 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base">1</span>
+            <div>
+              <strong class="block mb-1 text-slate-100 text-base md:text-lg">Estimulación (60s)</strong>
+              <p class="text-sm md:text-base">Observa las imágenes, lee las descripciones y reflexiona. <strong className="text-slate-100">Prepara tu mente antes de oler.</strong></p>
+            </div>
+          </li>
+          <li class="flex gap-3 md:gap-4">
+            <span class="flex-shrink-0 w-8 h-8 md:w-9 md:h-9 bg-accent-500 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base">2</span>
+            <div>
+              <strong class="block mb-1 text-slate-100 text-base md:text-lg">Acción (20s)</strong>
+              <p class="text-sm md:text-base">Huele el aroma con inspiraciones cortas y suaves.</p>
+            </div>
+          </li>
+          <li class="flex gap-3 md:gap-4">
+            <span class="flex-shrink-0 w-8 h-8 md:w-9 md:h-9 bg-slate-600 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base">3</span>
+            <div>
+              <strong class="block mb-1 text-slate-100 text-base md:text-lg">Completado</strong>
+              <p class="text-sm md:text-base">Repite la sesión o vuelve al menú.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+  </main>
+</Layout>
