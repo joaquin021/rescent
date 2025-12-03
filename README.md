@@ -9,7 +9,7 @@
 ## ✨ Features
 
 - 🎯 **Guided olfactory training** with 4 essential scents
-- ⏱️ **Structured sessions**: 60s stimulation + 20s sniffing
+- ⏱️ **Structured sessions**: 60s stimulation + 30s sniffing
 - 📱 **Mobile-first design** (feels like a native app)
 - 🌓 **Dark mode** for comfortable viewing
 - 🖼️ **Immersive visual design** with curated imagery
@@ -125,7 +125,7 @@ The app includes training sessions for 4 scientifically-selected scents:
 - Reflect on episodic memory questions
 - **Do NOT smell yet** - prepare your mind first
 
-### Phase 2: Action (20 seconds)
+### Phase 2: Action (30 seconds)
 - Visual cue: "Smell Now!"
 - Take short, gentle sniffs (not deep breaths)
 - Focus on the sensations
@@ -176,7 +176,7 @@ Edit `src/components/TrainingSession.jsx` (lines 4-7):
 ```javascript
 const PHASE_DURATIONS = {
   STIMULATION: 60,  // Change this
-  ACTION: 20,       // Change this
+  ACTION: 30,       // Change this
 };
 ```
 

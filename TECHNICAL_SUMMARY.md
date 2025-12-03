@@ -51,7 +51,7 @@ Cada aroma contiene:
 - 2 preguntas en cards destacadas para reflexionar
 - **Objetivo**: Preparar la mente ANTES de oler el aroma
 
-##### **Fase 2: ACTION (20 segundos) - AHORA huele**
+##### **Fase 2: ACTION (30 segundos) - AHORA huele**
 - Timer countdown grande
 - Barra de progreso verde
 - Badge verde pulsante: "Fase 2: ¡Huele Ahora!"
@@ -164,7 +164,7 @@ npm run preview       # Preview del build
 ```javascript
 const PHASE_DURATIONS = {
   STIMULATION: 60,  // Cambia aquí
-  ACTION: 20,       // Cambia aquí
+  ACTION: 30,       // Cambia aquí
 };
 ```
 

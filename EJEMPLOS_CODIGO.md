@@ -70,7 +70,7 @@ useEffect(() => {
         // Cambio de fase automático
         if (phase === 'STIMULATION') {
           setPhase('ACTION');
-          return 20; // Nueva duración
+          return 30; // Nueva duración
         } else if (phase === 'ACTION') {
           setPhase('COMPLETED');
           return 0;
@@ -86,7 +86,7 @@ useEffect(() => {
 
 **Flujo:**
 ```
-STIMULATION (60s) → ACTION (20s) → COMPLETED
+STIMULATION (60s) → ACTION (30s) → COMPLETED
 ```
 
 ---
@@ -130,7 +130,7 @@ STIMULATION (60s) → ACTION (20s) → COMPLETED
 const [progress, setProgress] = useState(0);
 
 useEffect(() => {
-  const totalDuration = phase === 'STIMULATION' ? 60 : 20;
+  const totalDuration = phase === 'STIMULATION' ? 60 : 30;
   const elapsed = totalDuration - timeLeft;
   setProgress((elapsed / totalDuration) * 100);
 }, [timeLeft, phase]);

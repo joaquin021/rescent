@@ -62,7 +62,7 @@ Este es el archivo principal donde puedes modificar los textos, imágenes y preg
 ```javascript
 const PHASE_DURATIONS = {
   STIMULATION: 60,  // Cambia aquí (segundos)
-  ACTION: 20,       // Cambia aquí (segundos)
+  ACTION: 30,       // Cambia aquí (segundos)
 };
 ```
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 const PHASE_DURATIONS = {
   STIMULATION: 60, // 60 segundos
-  ACTION: 20,      // 20 segundos
+  ACTION: 30,      // 30 segundos
 };
 
 const TrainingSession = ({ aroma, baseUrl = '/' }) => {
